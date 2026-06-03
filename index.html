@@ -1,0 +1,32 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front-end Desmembrado</title>
+</head>
+<body>
+
+    <h1>Página Front-end Independente</h1>
+
+    <p id="conteudo-python">Carregando dados do servidor...</p>
+
+    <script>
+        // O JavaScript faz uma requisição para a API Flask
+        fetch('http://127.0.0.1:5000/api/dados')
+            .then(response => response.json()) // Converte a resposta para JSON
+            .then(data => {
+                document.getElementById('conteudo-python').textContent =
+                    data.mensagem;
+            })
+            .catch(error => {
+                console.error('Erro ao buscar dados:', error);
+                document.getElementById('conteudo-python').textContent =
+                    'Erro ao carregar dados do servidor.';
+            });
+    </script>
+
+</body>
+</html>
+```
